@@ -6,9 +6,6 @@ import Header from 'common/header';
 import Home from 'common/home';
 import Profile from 'common/profile';
 
-import Register from 'modules/auth/register-form';
-import Login from 'modules/auth/login-form';
-
 export default class App extends Component {
 	/** Gets fired when the route changes.
 	 *	@param {Object} event		"change" event from [preact-router](http://git.io/preact-router)
@@ -25,7 +22,6 @@ export default class App extends Component {
 				<Router path="/" onChange={this.handleRoute}>
 					<Router path="/auth/:component*">
 						<AsyncRoute path="/login" getComponent={ () => import('./pages/login').then(module => module.default) }/>
-						<Register path="/register"/>
 					</Router>
 					<Profile path="/profile/" user="me" />
 					<Profile path="/profile/:user" />
