@@ -1,0 +1,4 @@
+{
+	"API_ENDPOINT_PROD": "",
+	"API_ENDPOINT_DEV": "http://localhost:3030"
+}
