@@ -1,6 +1,7 @@
 import webpack from 'webpack';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
+import UglifyJsPlugin from 'uglifyjs-webpack-plugin';
 import autoprefixer from 'autoprefixer';
 import CopyWebpackPlugin from 'copy-webpack-plugin';
 import OfflinePlugin from 'offline-plugin';
@@ -105,10 +106,6 @@ module.exports = {
 				})
 			},
 			{
-				test: /\.json$/,
-				use: 'json-loader'
-			},
-			{
 				test: /\.(xml|html|txt|md)$/,
 				use: 'raw-loader'
 			},
@@ -137,35 +134,35 @@ module.exports = {
 			{ from: './favicon.ico', to: './' }
 		])
 	]).concat(ENV==='production' ? [
-		new webpack.optimize.UglifyJsPlugin({
-			output: {
-				comments: false
-			},
-			compress: {
-				unsafe_comps: true,
-				properties: true,
-				keep_fargs: false,
-				pure_getters: true,
-				collapse_vars: true,
-				unsafe: true,
-				warnings: false,
-				screw_ie8: true,
-				sequences: true,
-				dead_code: true,
-				drop_debugger: true,
-				comparisons: true,
-				conditionals: true,
-				evaluate: true,
-				booleans: true,
-				loops: true,
-				unused: true,
-				hoist_funs: true,
-				if_return: true,
-				join_vars: true,
-				cascade: true,
-				drop_console: true
-			}
-		}),
+		// new UglifyJsPlugin({
+		// 	output: {
+		// 		comments: false
+		// 	},
+		// 	compress: {
+		// 		unsafe_comps: true,
+		// 		properties: true,
+		// 		keep_fargs: false,
+		// 		pure_getters: true,
+		// 		collapse_vars: true,
+		// 		unsafe: true,
+		// 		warnings: false,
+		// 		screw_ie8: true,
+		// 		sequences: true,
+		// 		dead_code: true,
+		// 		drop_debugger: true,
+		// 		comparisons: true,
+		// 		conditionals: true,
+		// 		evaluate: true,
+		// 		booleans: true,
+		// 		loops: true,
+		// 		unused: true,
+		// 		hoist_funs: true,
+		// 		if_return: true,
+		// 		join_vars: true,
+		// 		cascade: true,
+		// 		drop_console: true
+		// 	}
+		// }),
 
 		new OfflinePlugin({
 			relativePaths: false,
